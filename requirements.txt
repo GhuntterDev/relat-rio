@@ -1,6 +1,6 @@
-streamlit==1.39.0  # Or whatever version you're using locally; latest is fine
+streamlit==1.40.1  # Latest as of October 2025; update if needed
 pandas==2.2.3
 numpy==2.1.2
-altair==5.4.1
+altair==5.5.0  # This version fixes Python 3.13 compatibility
 matplotlib==3.9.2
 reportlab==4.2.5
