@@ -1,0 +1,6 @@
+streamlit==1.39.0  # Or whatever version you're using locally; latest is fine
+pandas==2.2.3
+numpy==2.1.2
+altair==5.4.1
+matplotlib==3.9.2
+reportlab==4.2.5
