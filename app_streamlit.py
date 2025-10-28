@@ -889,14 +889,28 @@ if secao == "📈 Visão Geral & Gráficos":
                   .agg(valor_total=("valor","sum"))
                   .sort_values("valor_total", ascending=False)
                   .head(10))
+<<<<<<< HEAD
     st.altair_chart(compact_chart(loja_tot, "valor_total", "loja", "Vendas (R$)"))
+=======
+    if not loja_tot.empty and np.isfinite(loja_tot["valor_total"].to_numpy()).any():
+        st.altair_chart(compact_chart(loja_tot, "valor_total", "loja", "Vendas (R$)"))
+    else:
+        st.info("Sem dados para exibir o gráfico de lojas com os filtros atuais.")
+>>>>>>> 8eeb225 (Corrige data_editor width e evita gráficos com dados vazios)
 
     st.markdown("##### Totais por Setor (Top 10)")
     setor_tot = (df.groupby("setor", as_index=False)
                    .agg(valor_total=("valor","sum"))
                    .sort_values("valor_total", ascending=False)
                    .head(10))
+<<<<<<< HEAD
     st.altair_chart(compact_chart(setor_tot, "valor_total", "setor", "Vendas (R$)"))
+=======
+    if not setor_tot.empty and np.isfinite(setor_tot["valor_total"].to_numpy()).any():
+        st.altair_chart(compact_chart(setor_tot, "valor_total", "setor", "Vendas (R$)"))
+    else:
+        st.info("Sem dados para exibir o gráfico de setores com os filtros atuais.")
+>>>>>>> 8eeb225 (Corrige data_editor width e evita gráficos com dados vazios)
 
 elif secao == "🏆 Ranking Geral":
     st.subheader("Ranking Geral (por código base)")
@@ -904,7 +918,12 @@ elif secao == "🏆 Ranking Geral":
     view = search_in_df(agg_geral, q, ["codigo_base","nome"]).sort_values("rank_geral")
     st.data_editor(
         view[["rank_geral","codigo_base","nome","valor_total","quantidade_total"]],
+<<<<<<< HEAD
         width="stretch", hide_index=True,
+=======
+        hide_index=True,
+        use_container_width=True,
+>>>>>>> 8eeb225 (Corrige data_editor width e evita gráficos com dados vazios)
         column_config={
             "rank_geral": st.column_config.NumberColumn("Rank", format="%d", width="small"),
             "valor_total": st.column_config.NumberColumn("Valor (R$)", format="%.2f"),
@@ -920,7 +939,12 @@ elif secao == "🏪 Ranking por Loja":
     base = search_in_df(base, q, ["codigo_base","nome"])
     st.data_editor(
         base[["rank_loja","codigo_base","nome","valor_total","quantidade_total"]],
+<<<<<<< HEAD
         width="stretch", hide_index=True,
+=======
+        hide_index=True,
+        use_container_width=True,
+>>>>>>> 8eeb225 (Corrige data_editor width e evita gráficos com dados vazios)
         column_config={
             "rank_loja": st.column_config.NumberColumn("Rank", format="%d", width="small"),
             "valor_total": st.column_config.NumberColumn("Valor (R$)", format="%.2f"),
@@ -938,7 +962,12 @@ elif secao == "🗂️ Ranking por Setor":
     base = search_in_df(base, q, ["codigo_base","nome"])
     st.data_editor(
         base[["rank_setor","codigo_base","nome","valor_total","quantidade_total"]],
+<<<<<<< HEAD
         width="stretch", hide_index=True,
+=======
+        hide_index=True,
+        use_container_width=True,
+>>>>>>> 8eeb225 (Corrige data_editor width e evita gráficos com dados vazios)
         column_config={
             "rank_setor": st.column_config.NumberColumn("Rank", format="%d", width="small"),
             "valor_total": st.column_config.NumberColumn("Valor (R$)", format="%.2f"),
@@ -1205,7 +1234,12 @@ elif secao == "🎯 Destaques":
 
         st.data_editor(
             resumo[["rank_venda","rank_qtd","codigo_original","codigo_base","nome","valor_total","quantidade_total"]],
+<<<<<<< HEAD
             width="stretch", hide_index=True,
+=======
+            hide_index=True,
+            use_container_width=True,
+>>>>>>> 8eeb225 (Corrige data_editor width e evita gráficos com dados vazios)
             column_config={
                 "rank_venda": st.column_config.NumberColumn("Posição (Valor)", format="%d", width="small"),
                 "rank_qtd":   st.column_config.NumberColumn("Posição (Qtd)",   format="%d", width="small"),
@@ -3292,7 +3326,11 @@ elif secao == "🗓️ Histórico":
     cols_show = ["data","loja","setor","codigo","nome","quantidade","valor"]
     st.dataframe(
         df[cols_show].sort_values(["data","valor"], ascending=[False,False]).reset_index(drop=True),
+<<<<<<< HEAD
         width="stretch"
+=======
+        use_container_width=True
+>>>>>>> 8eeb225 (Corrige data_editor width e evita gráficos com dados vazios)
     )
     csv_hist = df[cols_show].to_csv(index=False, sep=";", decimal=",").encode("utf-8-sig")
     st.download_button(

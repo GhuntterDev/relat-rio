@@ -1,0 +1,15 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv
+venv/
+# Streamlit cache
+.streamlit/
+# Build/output
+build/
+dist/
+*.spec
+# OS
+Thumbs.db
