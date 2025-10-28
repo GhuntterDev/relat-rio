@@ -1003,12 +1003,20 @@ elif secao == "🗂️ Ranking por Setor":
             default_setores = [default_setores]
         default_setores_validos = [s for s in default_setores if s in setores_disponiveis]
 
-        setores_para_export = st.multiselect(
-            "Selecione os setores para exportar",
-            options=setores_disponiveis,
-            default=default_setores_validos,
-            key='setores_export'
-        )
+        # Evita o aviso do Streamlit: não passar default quando o valor já está no session_state
+        if 'setores_export' in st.session_state:
+            setores_para_export = st.multiselect(
+                "Selecione os setores para exportar",
+                options=setores_disponiveis,
+                key='setores_export'
+            )
+        else:
+            setores_para_export = st.multiselect(
+                "Selecione os setores para exportar",
+                options=setores_disponiveis,
+                default=default_setores_validos,
+                key='setores_export'
+            )
 
     if setores_para_export:
         col_btn_export1, col_btn_export2 = st.columns(2)
