@@ -13,3 +13,6 @@ dist/
 *.spec
 # OS
 Thumbs.db
+# Credentials
+COLABORADORES/service_account.json
+*.json
