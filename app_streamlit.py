@@ -890,7 +890,10 @@ if secao == "📈 Visão Geral & Gráficos":
                   .sort_values("valor_total", ascending=False)
                   .head(10))
     if not loja_tot.empty and np.isfinite(loja_tot["valor_total"].to_numpy()).any():
-        st.altair_chart(compact_chart(loja_tot, "valor_total", "loja", "Vendas (R$)"))
+        st.altair_chart(
+            alt_dark_theme(compact_chart(loja_tot, "valor_total", "loja", "Vendas (R$)")),
+            use_container_width=True
+        )
     else:
         st.info("Sem dados para exibir o gráfico de lojas com os filtros atuais.")
 
@@ -900,7 +903,10 @@ if secao == "📈 Visão Geral & Gráficos":
                    .sort_values("valor_total", ascending=False)
                    .head(10))
     if not setor_tot.empty and np.isfinite(setor_tot["valor_total"].to_numpy()).any():
-        st.altair_chart(compact_chart(setor_tot, "valor_total", "setor", "Vendas (R$)"))
+        st.altair_chart(
+            alt_dark_theme(compact_chart(setor_tot, "valor_total", "setor", "Vendas (R$)")),
+            use_container_width=True
+        )
     else:
         st.info("Sem dados para exibir o gráfico de setores com os filtros atuais.")
 
@@ -3071,15 +3077,24 @@ elif secao == "📄 Relatório":
         with left:
             base = por_setor.sort_values("valor_total", ascending=False)
             st.caption(f"Top {top_k} Vendas por Setor — {loja_titulo.upper()} (mostrando {min(top_k,len(base))} de {len(base)})")
-            st.altair_chart(compact_chart(base.head(top_k), "valor_total", "setor", "Vendas (R$)"))
+            st.altair_chart(
+                alt_dark_theme(compact_chart(base.head(top_k), "valor_total", "setor", "Vendas (R$)")),
+                use_container_width=True
+            )
 
             base = por_setor.dropna(subset=["preco_medio"]).sort_values("preco_medio", ascending=False)
             st.caption(f"Top {top_k} Preço Médio por Setor")
-            st.altair_chart(compact_chart(base.head(top_k), "preco_medio", "setor", "Preço Médio (R$)"))
+            st.altair_chart(
+                alt_dark_theme(compact_chart(base.head(top_k), "preco_medio", "setor", "Preço Médio (R$)")),
+                use_container_width=True
+            )
 
             base = por_setor.dropna(subset=["ticket_medio_aprox"]).sort_values("ticket_medio_aprox", ascending=False)
             st.caption(f"Top {top_k} Ticket Médio (aprox.) por Setor")
-            st.altair_chart(compact_chart(base.head(top_k), "ticket_medio_aprox", "setor", "Ticket Médio (R$)"))
+            st.altair_chart(
+                alt_dark_theme(compact_chart(base.head(top_k), "ticket_medio_aprox", "setor", "Ticket Médio (R$)")),
+                use_container_width=True
+            )
 
         # ===== prints por loja (igual você já tinha) =====
         st.divider()
