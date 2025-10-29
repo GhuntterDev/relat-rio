@@ -351,7 +351,8 @@ def try_read_json_local(filename: str):
     base = Path(sys._MEIPASS) if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS") else (Path(__file__).parent if "__file__" in globals() else Path(os.getcwd()))
     p = base / filename
     if p.exists():
-        with open(p, "r", encoding="utf-8") as f:
+        # Usar utf-8-sig para tolerar arquivos com BOM gerados em diferentes ambientes
+        with open(p, "r", encoding="utf-8-sig") as f:
             return json.load(f), str(p)
     return None, None
 
