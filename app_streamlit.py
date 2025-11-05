@@ -1670,7 +1670,7 @@ elif secao == "🎯 Metas":
             if isinstance(ui_tbl, pd.DataFrame) and not ui_tbl.empty:
                 cols_print = ["setor","dias_restantes","faltante_rs","ritmo_atual_dia","necessario_dia","gap_dia","status_ritmo"]
                 cols_print = [c for c in cols_print if c in ui_tbl.columns]
-                tbl = ui_tbl[cols_print].copy().head(12).reset_index(drop=True)
+                tbl = ui_tbl[cols_print].copy().reset_index(drop=True)
                 tabela_tipo = "loja"
             else:
                 # Fallback: monta com a mesma função usada na interface
@@ -1683,7 +1683,7 @@ elif secao == "🎯 Metas":
 
                 cols_print = ["setor","dias_restantes","faltante_rs","ritmo_atual_dia","necessario_dia","gap_dia","status_ritmo"]
                 cols_print = [c for c in cols_print if c in tbl_full.columns]
-                tbl = tbl_full[cols_print].head(12).reset_index(drop=True)
+                tbl = tbl_full[cols_print].reset_index(drop=True)
                 tabela_tipo = "loja"
             # -------------------- FIGURA --------------------
             fig = plt.figure(figsize=(12, 18), dpi=180)
