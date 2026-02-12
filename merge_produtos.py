@@ -1,9 +1,9 @@
-﻿import csv
+import csv
 import json
 import os
 from typing import Dict, Iterable
 
-CSV_PATH = os.path.join(os.path.dirname(__file__), "Materiais e Produtos (2).csv")
+CSV_PATH = os.path.join(os.path.dirname(__file__), "Materiais e Produtos (4).csv")
 JSON_PATH = os.path.join(os.path.dirname(__file__), "produtos.json")
 SETORES_PATH = os.path.join(os.path.dirname(__file__), "setores.json")
 
